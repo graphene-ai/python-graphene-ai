@@ -29,10 +29,13 @@ class Graphene:
             self.endpoint_url = endpoint_url   
         self.api_key = api_key
 
-    def request(self, method, session_id, payload):
+    def request(self, method, session_id, payload=None):
         base = urljoin(self.endpoint_url, 'api/v1/')
         url = urljoin(base, ENDPOINTS[method])
-        params = {'api_key': self.api_key, 'session_id': session_id, 'payload': payload}
+        if method == "context":
+            params = {'api_key': self.api_key, 'session_id': session_id }
+        else:
+            params = {'api_key': self.api_key, 'session_id': session_id, 'payload': payload}
 
         req = requests.get(url, params = params)
         r = json.loads(req.text)
