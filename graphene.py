@@ -21,16 +21,16 @@ ENDPOINTS = {
 }
 
 class Graphene:
-    def __init__(self, api_key, endpoint_url=None):
+    def __init__(self, api_key, hostname=None):
         ''' Constructor for this class. '''
-        if endpoint_url is None:
-           self.endpoint_url = "https://graphene.indigoresearch.xyz/"
+        if hostname is None:
+           self.hostname = "https://graphene.indigoresearch.xyz/"
         else:
-            self.endpoint_url = endpoint_url   
+            self.hostname = hostname   
         self.api_key = api_key
 
     def request(self, method, session_id, payload=None):
-        base = urljoin(self.endpoint_url, 'api/v1/')
+        base = urljoin(self.hostname, 'api/v1/')
         url = urljoin(base, ENDPOINTS[method])
         if method == "context":
             params = {'api_key': self.api_key, 'session_id': session_id }
