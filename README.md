@@ -1,6 +1,8 @@
 # python-graphene-ai
 ![alt text](/res/logo.png "Graphene Logo")
 
+#TODO: Convert to RST
+
 Build natural language AI into applications, bots, and services using the Graphene API. Understand what your customers are saying, in whatever language, in real-time.
 
 # Getting Started
