@@ -29,13 +29,21 @@ class Graphene:
             self.hostname = hostname   
         self.api_key = api_key
 
-    def request(self, method, session_id, payload=None):
+
+    def request(self, method, session_id=None, payload=None):
+        '''Provide the method type and optional session_id and payload to query the API'''
         base = urljoin(self.hostname, 'api/v1/')
         url = urljoin(base, ENDPOINTS[method])
-        if method == "context":
-            params = {'api_key': self.api_key, 'session_id': session_id }
+        if session_id != None:
+            if method == "context":
+                params = {'api_key': self.api_key, 'session_id': session_id }
+            else:
+                params = {'api_key': self.api_key, 'session_id': session_id, 'payload': payload}
         else:
-            params = {'api_key': self.api_key, 'session_id': session_id, 'payload': payload}
+            if method == "context":
+                params = {'api_key': self.api_key}
+            else:
+                params = {'api_key': self.api_key, 'payload': payload}
 
         req = requests.get(url, params = params)
         r = json.loads(req.text)
@@ -43,5 +51,3 @@ class Graphene:
             logging.error(r['errors'])
         return r["payload"]
 
-
-        
