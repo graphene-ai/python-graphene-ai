@@ -8,7 +8,7 @@ from setuptools import setup
 
 version = re.search(
     '^__version__\s*=\s*"(.*)"',
-    open('graphene/graphene.py').read(),
+    open('graphene_ai/graphene.py').read(),
     re.M
     ).group(1)
 
@@ -17,8 +17,8 @@ with open("README.md", "rb") as f:
     long_descr = f.read().decode("utf-8")
 
 setup(
-    name = "graphene",
-    packages = ["graphene-ai"],
+    name = "graphene_ai",
+    packages = ["graphene_ai"],
     entry_points = {
         "console_scripts": ['graphene = graphene.graphene:main']
         },
