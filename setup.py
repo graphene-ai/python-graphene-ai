@@ -18,7 +18,7 @@ with open("README.md", "rb") as f:
 
 setup(
     name = "graphene",
-    packages = ["graphene"],
+    packages = ["graphene-ai"],
     entry_points = {
         "console_scripts": ['graphene = graphene.graphene:main']
         },
@@ -30,9 +30,7 @@ setup(
     keywords = ['GRAPHENE', 'AI', 'NATURAL LANGUAGE PROCESSING', 'MULTILINGUAL'],
     url = "https://github.com/graphene-ai/python-graphene-ai",
     install_requires=[
-        'argparse'
-    ],
-    install_requires=[            # I get to this in a second
-          'urllib'
-      ],
+        'argparse',
+        'urllib'
+    ]
 )
